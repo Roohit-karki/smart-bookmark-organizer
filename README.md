@@ -43,7 +43,7 @@
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/smart-bookmark-organizer.git
+   https://github.com/Roohit-karki/smart-bookmark-organizer.git
    ```
 
 2. Open Chrome and navigate to:
