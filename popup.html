@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Bookmark Organizer</title>
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --bg-tertiary: #f5f5f5;
+      --text-primary: #000000;
+      --text-secondary: #666666;
+      --text-tertiary: #888888;
+      --border-color: #cccccc;
+      --button-bg: #4285f4;
+      --button-hover: #3367d6;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-tertiary: #333333;
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --text-tertiary: #999999;
+      --border-color: #444444;
+      --button-bg: #4285f4;
+      --button-hover: #5294ff;
+    }
+
+    body {
+      width: 400px;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg-secondary);
+      transform-origin: center;
+      transition: transform 0.3s ease-out, background 0.3s;
+    }
+
+    .header h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      background: linear-gradient(45deg, var(--button-bg), var(--button-hover));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+
+    .header h2::before {
+      content: '';
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      background: var(--button-bg);
+      opacity: 0.1;
+      border-radius: 50%;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: translateY(-50%) scale(1); opacity: 0.1; }
+      50% { transform: translateY(-50%) scale(1.2); opacity: 0.2; }
+      100% { transform: translateY(-50%) scale(1); opacity: 0.1; }
+    }
+
+    .categories {
+      margin: 15px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .category {
+      padding: 10px;
+      margin: 5px 0;
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+      color: var(--text-primary);
+    }
+
+    .bookmark-count {
+      float: right;
+      color: var(--text-secondary);
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 20px;
+      color: var(--text-secondary);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: var(--button-bg);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background: var(--button-hover);
+    }
+
+    button:disabled {
+      background: var(--bg-tertiary);
+      cursor: not-allowed;
+    }
+
+    .organize-controls {
+      margin-bottom: 20px;
+    }
+
+    .organize-select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+      width: auto;
+      padding: 8px 12px;
+      font-size: 14px;
+      background-color: var(--bg-secondary);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      opacity: 0.8;
+      background-color: var(--bg-tertiary);
+    }
+  </style>
+</head>
+  <body>
+  <button class="theme-toggle" id="themeToggle">Switch to Dark Mode</button>
+  <div class="header">
+    <h2>Smart Bookmark Organizer</h2>
+  </div>
+  
+  <div class="organize-controls">
+    <select id="organizeMethod" class="organize-select">
+      <option value="category">Organize by Category</option>
+      <option value="website">Organize by Website</option>
+    </select>
+    <button id="organize">Organize Bookmarks</button>
+  </div>
+  
+  <div id="categories" class="categories"></div>
+  
+  <div id="status" class="status"></div>
+  
+  <div class="footer">
+    Developed by Rohit Karki
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
