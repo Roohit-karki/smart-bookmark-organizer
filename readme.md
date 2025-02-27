@@ -72,8 +72,6 @@
 
 ### Encryption Details
 
-- **AES-GCM** encryption with 256-bit keys
-- Keys never leave your browser
 - Zero external data transmission
 
 ### Privacy Features
