@@ -72,8 +72,6 @@
 
 ### Encryption Details
 
-- **AES-GCM** encryption with 256-bit keys
-- Keys never leave your browser
 - Zero external data transmission
 
 ### Privacy Features
@@ -139,6 +137,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **[⬆ back to top](#-smart-bookmark-organizer)**
 
-Made with ❤️ by Rohit Karki
+Made with ❤️ by Rohit Karki 
 
 </div>
